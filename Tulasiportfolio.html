@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ganta Tulasi | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --primary:#7c3aed;
+  --bg:#f4f6fb;
+  --text:#111827;
+  --card:#ffffff;
+  --section:#eef2ff;
+}
+.dark{
+  --bg:#020617;
+  --text:#e5e7eb;
+  --card:#020617;
+  --section:#020617;
+}
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+section{
+  padding:80px 8%;
+}
+.section-title{
+  font-size:34px;
+  text-align:center;
+  margin-bottom:45px;
+  color:var(--primary);
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:var(--card);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  z-index:1000;
+}
+.logo{
+  font-size:24px;
+  font-weight:800;
+  color:var(--primary);
+}
+nav{
+  display:flex;
+  gap:18px;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  padding:8px 14px;
+  border-radius:8px;
+}
+nav a:hover{
+  background:var(--primary);
+  color:#fff;
+}
+.menu-btn{
+  display:none;
+  font-size:24px;
+}
+.toggle{
+  cursor:pointer;
+  font-size:18px;
+  margin-right:15px;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  background:linear-gradient(135deg,#ede9fe,#fdf4ff);
+}
+.hero-text h1{
+  font-size:52px;
+  margin-bottom:15px;
+}
+.hero-text span{
+  color:var(--primary);
+}
+.hero-text p{
+  max-width:520px;
+  line-height:1.8;
+  color:#555;
+}
+.hero-buttons{
+  margin-top:30px;
+}
+.btn{
+  padding:14px 26px;
+  border-radius:12px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+}
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+.btn-outline{
+  border:2px solid var(--primary);
+  color:var(--primary);
+  margin-left:12px;
+}
+.hero-img{
+  background:var(--card);
+  padding:22px;
+  border-radius:30px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.15);
+}
+.hero-img img{
+  width:280px;
+  border-radius:20px;
+}
+
+/* ================= ABOUT ================= */
+#about{
+  background:var(--section);
+}
+#about p{
+  max-width:750px;
+  margin:auto;
+  text-align:center;
+  font-size:18px;
+  line-height:1.8;
+}
+
+/* ================= PROJECTS ================= */
+#projects{
+  background:var(--bg);
+}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.project-card{
+  background:var(--card);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(0,0,0,0.12);
+  transition:0.4s;
+  opacity:0;
+  transform:translateX(-60px);
+}
+.project-card.show{
+  opacity:1;
+  transform:translateX(0);
+  transition:all 0.7s ease;
+}
+.project-card:hover{
+  transform:translateY(-10px);
+}
+.project-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+.project-content{
+  padding:22px;
+}
+.project-content span{
+  color:var(--primary);
+  font-size:13px;
+  font-weight:700;
+}
+.scroll-wrapper{
+  overflow:hidden;
+  position:relative;
+}
+
+.scroll-track{
+  display:flex;
+  gap:30px;
+  width:max-content;
+  animation:scrollLeft 25s linear infinite;
+}
+
+.project-card{
+  min-width:300px;
+  background:var(--card);
+  border-radius:22px;
+  box-shadow:0 20px 45px rgba(0,0,0,0.15);
+  overflow:hidden;
+}
+
+.project-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.project-content{
+  padding:20px;
+}
+
+.project-content span{
+  color:var(--primary);
+  font-weight:700;
+  font-size:13px;
+}
+
+/* 🔁 Animation */
+@keyframes scrollLeft{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+/* ⏸ Hover cheste stop */
+.scroll-wrapper:hover .scroll-track{
+  animation-play-state:paused;
+}
+
+
+/* ================= SKILLS ================= */
+#skills{
+  background:linear-gradient(135deg,#f5f3ff,#eef2ff);
+}
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:25px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.skill-card{
+  background:var(--card);
+  border-radius:18px;
+  padding:25px 15px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+  transition:0.4s;
+}
+
+.skill-card:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 20px 45px rgba(124,58,237,0.3);
+}
+
+.skill-card i{
+  font-size:42px;
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.skill-card h4{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.skill-card p{
+  font-size:13px;
+  color:#666;
+}
+
+
+
+/* ================= CONTACT ================= */
+#contact{
+  background:var(--section);
+  text-align:center;
+}
+#contact p{
+  font-size:18px;
+  margin:10px 0;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  nav{
+    position:absolute;
+    top:70px;
+    right:8%;
+    background:var(--card);
+    flex-direction:column;
+    padding:20px;
+    display:none;
+    border-radius:12px;
+  }
+  nav.active{display:flex;}
+  .menu-btn{display:block;}
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    padding-top:120px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Tulasi</div>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div>
+    <i class="fas fa-moon toggle" onclick="toggleDark()"></i>
+    <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Hello, I'm <br><span>Ganta Tulasi</span></h1>
+    <p>
+      Java Full Stack Developer student passionate about Spring Boot,
+      React and MySQL. Studying B.Tech CSE at GMR Institute of Technology.
+    </p>
+    <div class="hero-buttons">
+      <a href="./Ganta Tulasi.pdf" download class="btn btn-primary">
+        <i class="fa fa-download"></i> Resume
+      </a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="images/photo.jpg" alt="Profile">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <p>
+    I am from Nandigam, Andhra Pradesh. Currently pursuing B.Tech 2nd Year
+    in Computer Science & Engineering at GMR Institute of Technology, Rajam.
+    I love building real-time web applications.
+  </p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+  <div class="scroll-wrapper">
+    <div class="scroll-track">
+
+      <!-- CARD 1 -->
+      <div class="project-card">
+        <img src="images/banking.png">
+        <div class="project-content">
+          <h3>Banking Application</h3>
+          <p>Deposit, Withdraw, Transactions</p>
+          <span>Spring Boot • React • MySQL</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3">
+        <div class="project-content">
+          <h3>Cab Booking System</h3>
+          <p>Admin & Driver Assignment</p>
+          <span>Spring Boot • React</span>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72">
+        <div class="project-content">
+          <h3>Student Image Portal</h3>
+          <p>Image Upload System</p>
+          <span>HTML • CSS • JS</span>
+        </div>
+      </div>
+
+      <!-- DUPLICATE AGAIN (smooth infinite scroll kosam) -->
+      <div class="project-card">
+        <img src="images/banking.png">
+        <div class="project-content">
+          <h3>Banking Application</h3>
+          <p>Deposit, Withdraw, Transactions</p>
+          <span>Spring Boot • React • MySQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3">
+        <div class="project-content">
+          <h3>Cab Booking System</h3>
+          <p>Admin & Driver Assignment</p>
+          <span>Spring Boot • React</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72">
+        <div class="project-content">
+          <h3>Student Image Portal</h3>
+          <p>Image Upload System</p>
+          <span>HTML • CSS • JS</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> 
+
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <i class="fa-brands fa-java"></i>
+      <h4>Java</h4>
+      <p>Advanced</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-solid fa-leaf"></i>
+      <h4>Spring Boot</h4>
+      <p>Backend Framework</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-react"></i>
+      <h4>React</h4>
+      <p>Frontend Library</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-solid fa-database"></i>
+      <h4>MySQL</h4>
+      <p>Database</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-html5"></i>
+      <h4>HTML5</h4>
+      <p>Structure</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-css3-alt"></i>
+      <h4>CSS3</h4>
+      <p>Styling</p>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-js"></i>
+      <h4>JavaScript</h4>
+      <p>Logic & DOM</p>
+    </div>
+
+   </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p><i class="fa fa-envelope"></i> tulasi.ganta400@gmail.com</p>
+  <p><i class="fa fa-phone"></i> 7396211465</p>
+</section>
+
+<footer>© 2025 Ganta Tulasi | Portfolio</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("active");
+}
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+/* Skills animation */
+const bars=document.querySelectorAll(".progress-bar");
+const skillObserver=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    bars.forEach(bar=>bar.style.width=bar.dataset.width);
+  }
+},{threshold:0.4});
+skillObserver.observe(document.querySelector("#skills"));
+
+/* Projects side-by-side one by one */
+const projectCards=document.querySelectorAll(".project-card");
+const projectObserver=new IntersectionObserver(entries=>{
+  entries.forEach((entry,index)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>{
+        entry.target.classList.add("show");
+      },index*250);
+      projectObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.3});
+projectCards.forEach(card=>projectObserver.observe(card));
+</script>
+
+</body>
+</html>
